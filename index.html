@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Site Checks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<div id="demo-banner" class="banner" hidden>Demo mode: no backend connected. PIN is 1234. Nothing is saved.</div>
+
+<section id="scr-login" class="screen" hidden>
+  <header class="hero">
+    <img src="icons/icon-192.png" alt="">
+    <h1>Site Checks</h1>
+    <div class="tag">Opening, middle and closing</div>
+    <div class="by">by KitchenBASE</div>
+  </header>
+  <div class="sheet">
+    <div id="login-pick">
+      <div class="eyebrow">Pick your name</div>
+      <input id="login-search" class="search" type="search" placeholder="Search names" autocomplete="off">
+      <div id="login-list" class="list"></div>
+      <p class="muted small">Handing the phone to someone else? Tap Lock at the top of the app first.</p>
+    </div>
+    <form id="pin-panel" hidden>
+      <button type="button" id="pin-back" class="link">‹ Back</button>
+      <h2 id="pin-name"></h2>
+      <label for="pin">Enter your PIN</label>
+      <input id="pin" class="pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" required>
+      <button class="btn primary" type="submit">Log in</button>
+      <p class="muted small">The same PIN as the Kitchen Handover app. Forgot it? Ask the admin.</p>
+    </form>
+  </div>
+</section>
+
+<section id="scr-home" class="screen" hidden>
+  <header class="topbar">
+    <div class="mid left"><div class="topbar-title">Site Checks</div><div class="topbar-sub" id="home-user"></div></div>
+    <button id="btn-lock" class="link light" type="button">Lock</button>
+  </header>
+  <div class="body">
+    <div id="home-tabs" class="seg big"></div>
+    <div id="site-chips" class="chips"></div>
+    <input id="home-search" class="search" type="search" placeholder="Search site, date, who" autocomplete="off">
+    <div id="home-list" class="list"></div>
+  </div>
+</section>
+
+<section id="scr-new" class="screen" hidden>
+  <header class="topbar">
+    <button id="new-back" class="link light" type="button">‹ Back</button>
+    <div class="mid"><div class="topbar-title">Start a check</div></div>
+    <span class="spacer"></span>
+  </header>
+  <form id="new-form" class="body">
+    <label class="field"><span class="label">Site</span><select id="new-site" required></select></label>
+    <div class="field"><span class="label">Check</span><div id="new-type" class="seg"></div></div>
+    <label class="field"><span class="label">Day</span><input id="new-date" type="date" required><span class="hint">A missed day can be filled in late; it shows as done late.</span></label>
+    <button class="btn primary" type="submit">Start</button>
+  </form>
+</section>
+
+<section id="scr-form" class="screen withbar" hidden>
+  <header class="topbar">
+    <button id="form-back" class="link light" type="button">‹ Back</button>
+    <div class="mid"><div class="topbar-title" id="form-title"></div><div class="topbar-sub" id="form-sub"></div></div>
+    <span id="form-status" class="status"></span>
+  </header>
+  <div id="form-body" class="body"></div>
+  <div class="bottombar"><button id="btn-complete" class="btn primary" type="button">Review and complete</button></div>
+</section>
+
+<section id="scr-preview" class="screen withbar" hidden>
+  <header class="topbar">
+    <button id="preview-back" class="link light" type="button">‹ Back to form</button>
+    <div class="mid"><div class="topbar-title">Preview</div><div class="topbar-sub" id="preview-sub"></div></div>
+    <span class="spacer"></span>
+  </header>
+  <div class="body">
+    <p id="preview-note" class="note"></p>
+    <div id="preview-paper"></div>
+  </div>
+  <div class="bottombar"><button id="btn-send" class="btn primary" type="button">Complete check</button></div>
+</section>
+
+<section id="scr-detail" class="screen" hidden>
+  <header class="topbar">
+    <button id="detail-back" class="link light" type="button">‹ Back</button>
+    <div class="mid"><div class="topbar-title" id="detail-title"></div><div class="topbar-sub" id="detail-sub"></div></div>
+    <span class="spacer"></span>
+  </header>
+  <div id="detail-body" class="body"></div>
+</section>
+
+<div id="toast" role="status" hidden></div>
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
